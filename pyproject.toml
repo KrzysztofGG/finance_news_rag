@@ -1,0 +1,28 @@
+[project]
+name = "finance-rag"
+version = "0.1.0"
+description = "Finance article processing pipeline with NER and Elasticsearch"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "transformers>=4.36.0",
+    "torch>=2.1.0",
+    "sentence-transformers>=2.2.2",
+    "elasticsearch>=8.11.0,<9.0.0",
+    "python-dotenv>=1.0.0",
+    "newsapi-python>=0.2.7",
+    "langgraph>=0.2.0",
+    "langchain-core>=0.3.0",
+    "langchain-huggingface>=0.1.0",
+    "huggingface-hub>=0.20.0",
+    "pyyaml>=6.0",
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]

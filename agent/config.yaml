@@ -1,0 +1,46 @@
+# Finance RAG Agent Configuration
+
+# Elasticsearch Configuration
+elasticsearch:
+  host: "http://localhost:9200"
+  index_name: "finance_articles"
+
+# LLM Configuration
+llm:
+  # Local model via Ollama (runs on your machine)
+  # Options: 
+  #   - gemma2:2b (very fast, ~1.6GB)
+  #   - llama3.2:3b (fast, ~2GB)
+  #   - phi3:mini (fast, ~2.3GB)
+  #   - mistral:7b (best quality, ~4.1GB)
+  model: "gemma2:2b"
+  
+  # Temperature (0.0 = deterministic, 1.0 = creative)
+  temperature: 0.1
+  
+  # Maximum tokens to generate in response
+  max_new_tokens: 512
+
+# Retrieval Configuration
+retrieval:
+  # Number of articles to retrieve from Elasticsearch
+  size: 5
+  
+  # Minimum relevance score
+  # Note: hybrid_search scores are typically 0-2 range
+  # Lower = more permissive, Higher = more strict
+  min_score: 0.1
+  
+  # Text weight for hybrid search (0.0 - 1.0)
+  # 0.0 = pure semantic search
+  # 1.0 = pure keyword search
+  # 0.5 = balanced hybrid
+  text_weight: 0.5
+
+# Agent Behavior
+agent:
+  # Enable verbose logging
+  verbose: false
+  
+  # Timeout for LLM requests (seconds)
+  timeout: 30
